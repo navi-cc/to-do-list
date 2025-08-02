@@ -1,0 +1,222 @@
+.add-task-form-modal {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    border-radius: 20px;
+    border: none;
+    padding: 12px 10px 12px 10px;
+
+    width: 25%;
+
+    background-color: #fffbfb;
+
+    transition: .3s;
+}
+
+.add-task-form-modal.hidden {
+       transform: translate(-50%, -10%) scale(0);
+}
+
+.close-button {
+   float: right;
+}
+
+
+.add-task-form > ul {
+    display: var(--secondary-display-flex);
+    flex-direction: column;
+}
+
+#task-form-title > input {
+    font-size: .9rem;
+    font-weight: bold;
+    padding: 6px 10px 6px 10px;
+    width: 100%;
+}
+
+.task-form-buttons {
+    display: flex;
+    column-gap: 15px;
+
+    margin-top: 40px;
+    margin-left: 10px;
+}
+
+
+.task-form-buttons > img, .close-button {
+    width: 21px;
+    cursor: pointer;
+}
+
+#task-form-description {
+    position: relative;
+
+    transition: .2s;
+}
+
+
+#task-form-description > p {
+
+    width: 100%;
+    overflow: auto;
+    padding: 10px;
+
+    font-family: var(--primary-font-family);
+    border: solid 1px #1a1a1a;
+    border-radius: 20px;
+
+    cursor: pointer;
+
+    font-size: .6rem;
+}
+
+#task-form-description > p:empty::before {
+    content: attr(data-placeholer);
+    color: rgb(111, 111, 111);
+}
+
+
+
+#task-form-due-date > img {
+    width: 15px;
+}
+
+
+#task-form-title > input, #task-form-description > p, 
+#task-form-title > input:focus, #task-form-description > p:focus {
+    border: none;
+    outline: none;
+    background: none;
+}
+
+.task-priority-button-container {
+    cursor: pointer;
+    position: relative;
+}
+
+.task-form-priority-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 10px;
+
+    position: absolute;
+
+    border-radius: 10px;
+    background-color: #393E46;
+   
+    padding: 20px;
+
+    opacity: 1;
+}
+
+.task-form-priority-container.hidden {
+    opacity: 0;
+}
+
+.task-form-priority-container > span {
+    display: flex;
+    align-items: center;
+    background-color: #222831;
+    border-radius: 10px;
+    padding: 10px 20px;
+
+    font-size: .6rem;
+    color: #EEEEEE;
+    cursor: pointer;
+
+    position: relative;
+
+    transition: .2s;
+}
+
+.task-form-priority-container > span:hover {
+    background-color: #EEEEEE;
+    color: #393E46;
+}
+
+.task-form-priority-container > span::after {
+    content: '';
+
+    aspect-ratio: 1;
+    width: 10px;
+    margin-left: 10px;
+    border-radius: 10px;
+}
+
+#task-priority-high::after {
+    background-color: red;
+}
+
+#task-priority-medium::after {
+    background-color: #ffaa00;
+}
+
+#task-priority-low::after {
+    background-color: #26ff00;
+}
+
+.selected-button-container {
+    display: flex;
+    align-items: center;
+}
+
+.selected-priority, .selected-due-date {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+
+.selected-priority, .selected-due-date {
+    display: flex;
+   
+    background-color: #222831;
+    border-radius: 10px;
+    padding: 10px 20px;
+
+    font-size: .6rem;
+    color: #EEEEEE;
+
+    width: max-content;
+} 
+
+
+.selected-priority::after {
+    content: '';
+
+    aspect-ratio: 1;
+    width: 5px;
+    margin-left: 10px;
+    border-radius: 10px;
+
+    align-self: center;
+}
+
+
+.selected-priority.hidden, .selected-due-date.hidden {
+    display: none;
+}
+
+#task-form-submit {
+    position: absolute;
+    bottom: 11px;
+    right: 14px;
+    color: #1d1c1c;
+    font-size: .8rem;
+    font-family: 'Poppins Bold', sans-serif;
+    text-transform: uppercase;
+    padding: 5.5px 20px 6px 20px;
+
+
+    background-color: transparent;
+    border: solid 1.5px #1a1a1a;
+    border-radius: 5px;
+
+    transition: .2s;
+}
+
+
+#task-form-submit:hover {
+    background-color: #909090; 
+}
