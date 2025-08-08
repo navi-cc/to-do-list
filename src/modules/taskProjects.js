@@ -16,7 +16,7 @@ export default class TaskProject {
         this.#projectTasks.push(task)
     }
 
-    getProjectTasks() {
+    getTasks() {
         return this.#projectTasks;
     }
 }
