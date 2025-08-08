@@ -1,0 +1,114 @@
+.menu {
+    background-color: #393E46;
+
+    color: #EEEEEE;
+}
+
+.menu > nav {
+    display: var(--secondary-display-flex);
+    flex-direction: column;
+}
+
+.primary-navigation-buttons {
+    display: var(--secondary-display-flex);
+    flex-direction: column;
+
+    row-gap: 40px;
+
+    font-size: .8rem;
+
+    margin-top: 50px;
+}
+
+.add-task-btn {
+    color: #EEEEEE;
+    text-transform: initial;
+
+    align-self: center;
+
+    background-color: #222831;
+
+    padding: 16px 25px;
+    border-radius: 10px;
+
+    font-size: 1rem;
+
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    
+    transition: .2s;
+
+    margin-top: 50px;
+}
+
+.task-projects > h5 {
+    margin-top: 7rem;
+}
+
+.home-btn.active, .today-due-date-btn.active,
+.upcoming-due-date-btn.active {
+    background-color: #222831;
+}
+
+.home-btn, .today-due-date-btn,
+.upcoming-due-date-btn {
+    margin-left: 15px;
+    padding: 20px 20px 20px 0px;
+    transition: .2s;
+
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+
+    padding-left: 30px;
+
+    display: var(--secondary-display-flex);
+    align-items: center;
+    column-gap: 20px;
+
+    font-weight: lighter;
+}
+
+.today-due-date-btn,
+.upcoming-due-date-btn {
+    padding-top: 22px;
+}
+
+
+.home-btn:hover, .today-due-date-btn:hover,
+.upcoming-due-date-btn:hover {
+    background-color: #222831;
+}
+
+.add-task-btn:hover {
+    color: #7b7c7c;
+}
+
+.add-task-btn:active {
+    background-color: #3e4754;
+}
+
+.home-btn:active, .today-due-date-btn:active,
+.upcoming-due-date-btn:active {
+    transition: .2s;
+    background-color: #3e4754;
+}
+
+
+.home-btn::before {
+    content: url('../assets/icons/home-icon.svg');
+}
+
+
+.today-due-date-btn::before {
+    content: url('../assets/icons/today-icon.svg');
+}
+
+
+.upcoming-due-date-btn::before {
+    content: url('../assets/icons/upcoming-icon.svg');
+}
+
+.task-projects {
+    margin-left: 20px;
+}
