@@ -15,6 +15,22 @@ export default class TaskProjectHolder {
         return TaskProjectHolder.#projects;
     }
 
+    static getTaskOrigin(task) {
+
+        let taskOrigin, taskIndexOrigin;
+
+        TaskProjectHolder.#projects.map(project => {
+            if (project.getTasks().includes(task)) {
+                 taskOrigin = project.getProjectName() 
+                 taskIndexOrigin = project.getTasks().indexOf(task)
+            }
+        })
+
+        return {
+            taskOrigin,
+            taskIndexOrigin
+        }
+    }
 
     static getTodayTask() {
         return TaskProjectHolder.getTaskProjects().reduce((todayTask, taskProject) => {
