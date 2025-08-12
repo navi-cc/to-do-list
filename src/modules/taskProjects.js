@@ -12,6 +12,10 @@ export default class TaskProject {
         this.#taskProjectName = newProjectName
     }
 
+    getProjectName() {
+        return this.#taskProjectName
+    }
+
     appendTask(task) {
         this.#projectTasks.push(task)
     }
