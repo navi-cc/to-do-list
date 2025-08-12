@@ -27,9 +27,14 @@ export default class Render {
     }
 
     static #handleRenderTask(tasks) {
-        tasks.map((task, taskIndex) => {
+        tasks.map(task => {
             const taskDetails = task.getTaskDetails()
-            Render.taskContainer.appendChild(taskNodeGenerator.generate(taskDetails.title, taskDetails.dueDate, taskDetails.priority, taskIndex))
+            const {taskOrigin, taskIndexOrigin} = TaskProjectHolder.getTaskOrigin(task) 
+            Render.taskContainer.appendChild(taskNodeGenerator.generate(taskDetails.title, 
+                                                                        taskDetails.dueDate, 
+                                                                        taskDetails.priority, 
+                                                                        taskIndexOrigin, 
+                                                                        taskOrigin))
         })
     }
 
