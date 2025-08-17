@@ -1,11 +1,11 @@
 import datepicker from "js-datepicker";
 import dateFormatter from "./dateFormatter.js";
+import ModalController from "./modalController.js";
 
 export default class TaskFormController {
 
     static #taskForm = document.querySelector('.add-task-form')    
-    static #modalContainer = document.querySelector('.modal-container')
-    static #addTaskFormModal = document.querySelector('.add-task-form-modal')
+    static taskSubmitButton = document.querySelector('#task-form-submit')
     static #taskPriorityPicker = document.querySelector('.task-priority-button-container')
     static #selectedPriority = document.querySelector('.selected-priority')
     static #selectedDueDate = document.querySelector('.selected-due-date')
@@ -13,20 +13,17 @@ export default class TaskFormController {
         onSelect: () => TaskFormController.#displaySelectedDueDate()
     })
 
-    constructor() {
-        this.#setTaskFormSubmitEvent()
-        this.#setPriorityPickerEvent()
+    static showForm() {
+        TaskFormController.changeSubmitButtonState(1)
+        ModalController.makeModalActive()
     }
 
-
-    closeForm() {
-        TaskFormController.#modalContainer.classList.remove('active')
-        TaskFormController.#addTaskFormModal.classList.add('hidden')
+    static resetForm() {
+        TaskFormController.#taskForm.reset()
     }
 
-    showForm() {
-        TaskFormController.#modalContainer.classList.add('active')
-        TaskFormController.#addTaskFormModal.classList.remove('hidden')
+    static changeSubmitButtonState(state) {
+        TaskFormController.taskSubmitButton.value = state ===  1 ? 'add' : 'save edit'
     }
 
     getFormValues() {
@@ -53,13 +50,13 @@ export default class TaskFormController {
         TaskFormController.#taskPriorityPicker.children[1].classList.add('hidden')
     }
 
-    #setTaskFormSubmitEvent() {
+    static setTaskFormSubmitEvent() {
         TaskFormController.#taskForm.onsubmit = function (e) {
             e.preventDefault()
         }
     }
 
-    #setPriorityPickerEvent() {
+    static setPriorityPickerEvent() {
         TaskFormController.#taskPriorityPicker.onmousedown = function (e) {
 
             if (e.target.id === "task-form-priority") {
