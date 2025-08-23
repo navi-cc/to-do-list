@@ -46,6 +46,22 @@ export default class TaskFormController {
     }
 
 
+    static setTaskFormStateToEdit(taskIndex, projectOrigin) {
+        TaskFormController.taskSubmitButton.value = 'save edit'
+        TaskFormController.#taskForm.dataset.state = 'edit'
+        TaskFormController.#taskForm.dataset.projectOrigin = projectOrigin
+        TaskFormController.#taskForm.dataset.taskIndex = taskIndex
+    }
+
+
+    static setTaskFormStateToAdd() {
+        TaskFormController.taskSubmitButton.value = 'add'
+        TaskFormController.#taskForm.dataset.state = 'add'
+        TaskFormController.#taskForm.removeAttribute('data-project-origin')
+        TaskFormController.#taskForm.removeAttribute('data-task-index')
+    }
+
+
     static #showPriorityPicker() {
         TaskFormController.#taskPriorityPicker.children[1].classList.remove('hidden')
     }
