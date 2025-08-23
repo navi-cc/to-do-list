@@ -36,13 +36,15 @@ export default class TaskFormController {
         TaskFormController.#taskFormField.priority.classList.add('hidden')
     }
 
-    static changeSubmitButtonState(state) {
-        TaskFormController.taskSubmitButton.value = state ===  1 ? 'add' : 'save edit'
+    static changeFormState(state, taskIndex, projectOrigin) {
+
+        if (state === 1) {
+            TaskFormController.setTaskFormStateToAdd()
+        } else {
+            TaskFormController.setTaskFormStateToEdit(taskIndex, projectOrigin)
+        }
     }
 
-    getFormValues() {
-
-    }
 
     static #showPriorityPicker() {
         TaskFormController.#taskPriorityPicker.children[1].classList.remove('hidden')
