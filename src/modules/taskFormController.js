@@ -1,7 +1,6 @@
 import datepicker from "js-datepicker";
 import dateFormatter from "./dateFormatter.js";
 import ModalController from "./modalController.js";
-import Logger from "./logger.js";
 import TaskProjectHolder from "./taskProjectHolder.js";
 import Render from "./render.js";
 
@@ -61,6 +60,14 @@ export default class TaskFormController {
         TaskFormController.#taskForm.removeAttribute('data-task-index')
     }
 
+    static getFormValues() {
+        return {
+            title: TaskFormController.#taskFormField.title.value,
+            description: TaskFormController.#taskFormField.description.textContent,
+            dueDate: TaskFormController.#taskFormField.dueDate.textContent,
+            priority: TaskFormController.#taskFormField.priority.textContent
+        }
+    }
 
     static #showPriorityPicker() {
         TaskFormController.#taskPriorityPicker.children[1].classList.remove('hidden')
