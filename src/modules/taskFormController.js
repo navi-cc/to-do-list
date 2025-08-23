@@ -1,6 +1,8 @@
 import datepicker from "js-datepicker";
 import dateFormatter from "./dateFormatter.js";
 import ModalController from "./modalController.js";
+import TaskProjectHolder from "./taskProjectHolder.js";
+import Render from "./render.js";
 
 export default class TaskFormController {
 
@@ -52,6 +54,17 @@ export default class TaskFormController {
 
     static setTaskFormSubmitEvent() {
         TaskFormController.#taskForm.onsubmit = function (e) {
+            let formState = e.target.dataset.state
+            let task = TaskFormController.getFormValues()
+            
+            if (formState === 'add') {
+                TaskProjectHolder.addNewTaskToProject(task)
+            } else {
+                TaskProjectHolder.saveTaskEdit(task, e.target.dataset.taskIndex, e.target.dataset.projectOrigin)
+            }
+            
+            Render.renderDefaultProject()            
+            ModalController.makeModalInactive()
             e.preventDefault()
         }
     }
