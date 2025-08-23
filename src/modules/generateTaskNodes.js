@@ -1,7 +1,10 @@
-export function generate(taskTitle, taskDueDate, taskPriority, taskIndex) {
+import ModalController from "./modalController.js"
+
+export function generate(taskTitle, taskDueDate, taskPriority, taskIndex, projectOrigin) {
     const mainContainer = document.createElement('div')
     mainContainer.className = 'task'
     mainContainer.dataset.taskIndex = taskIndex
+    mainContainer.dataset.projectOrigin = projectOrigin
     
 
     const taskInformationNode = document.createElement('section')
@@ -41,12 +44,13 @@ export function generate(taskTitle, taskDueDate, taskPriority, taskIndex) {
         },
     }
 
-    Object.entries(taskButtons).map(([key, node]) => {
+    Object.entries(taskButtons).map(([key, node], index) => {
         if (key === 'container') return;
         const li = document.createElement('li')
         const anchor = document.createElement('a')
         const div = document.createElement('div')
 
+        div.onmousedown = ModalController.handleEvent[index]
         div.classList.add('task-button')
         div.classList.add(node.className)
         anchor.appendChild(div)
