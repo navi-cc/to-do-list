@@ -1,5 +1,6 @@
 import dateFormatter from "./dateFormatter.js";
 import * as dateParse from "./dateParser.js"
+import Task from "./task.js";
 
 export default class TaskProjectHolder {
 
@@ -8,6 +9,21 @@ export default class TaskProjectHolder {
 
     static addTaskProject(taskProject) {
         TaskProjectHolder.#projects.push(taskProject)
+    }
+
+
+    static addNewTaskToProject(task, projectOrigin = 'default') {
+       TaskProjectHolder.#projects.find(taskProject => taskProject.getProjectName() === projectOrigin)
+       .getTasks().push(new Task(task.title, task.description, task.dueDate, task.priority))
+    }
+
+    static saveTaskEdit(editedTask, taskIndex, projectOrigin) {
+
+       const task = TaskProjectHolder.#projects.find(taskProject => taskProject.getProjectName() === projectOrigin).getTasks().at(taskIndex)
+       task.editTitle(editedTask.title)
+       task.editDescription(editedTask.description)
+       task.editDueDate(editedTask.dueDate)
+       task.editPriority(editedTask.priority)
     }
 
 
