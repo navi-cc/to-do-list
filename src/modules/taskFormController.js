@@ -1,10 +1,19 @@
 import datepicker from "js-datepicker";
 import dateFormatter from "./dateFormatter.js";
 import ModalController from "./modalController.js";
+import Logger from "./logger.js";
 import TaskProjectHolder from "./taskProjectHolder.js";
 import Render from "./render.js";
 
 export default class TaskFormController {
+
+
+    static #taskFormField = {
+        title: document.querySelector('#task-form-title > input'),
+        description: document.querySelector('#task-form-description > p'),
+        dueDate: document.querySelector('.selected-button-container > .selected-due-date'),
+        priority: document.querySelector('.selected-button-container > .selected-priority')
+    }
 
     static #taskForm = document.querySelector('.add-task-form')    
     static taskSubmitButton = document.querySelector('#task-form-submit')
@@ -22,6 +31,9 @@ export default class TaskFormController {
 
     static resetForm() {
         TaskFormController.#taskForm.reset()
+        TaskFormController.#taskFormField.description.textContent = ''
+        TaskFormController.#taskFormField.dueDate.classList.add('hidden')
+        TaskFormController.#taskFormField.priority.classList.add('hidden')
     }
 
     static changeSubmitButtonState(state) {
