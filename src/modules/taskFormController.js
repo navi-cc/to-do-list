@@ -24,7 +24,7 @@ export default class TaskFormController {
     })
 
     static showForm() {
-        TaskFormController.changeSubmitButtonState(1)
+        TaskFormController.changeFormState(1)
         ModalController.makeModalActive()
     }
 
